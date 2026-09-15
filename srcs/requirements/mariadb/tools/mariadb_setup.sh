@@ -23,7 +23,7 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
     mysql -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${DB_USER_PWD}';"
     
     mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
-    mysql -e "FLUSH PRIVILEGES;"
+    mysql -u root -p"${DB_ROOT_PWD}" -e "FLUSH PRIVILEGES;"
 
     echo "Shutting down background MariaDB process..."
     mysqladmin -u root -p"${DB_ROOT_PWD}" shutdown

@@ -1,6 +1,7 @@
-`FROM debian:bullseye
+FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y nginx openssl
+RUN sed -i 's|^# deb http://snapshot|deb [check-valid-until=no] http://snapshot|g; s|^deb http://deb|# deb http://deb|g' /etc/apt/sources.list \
+    && apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl
 
