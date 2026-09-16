@@ -5,6 +5,7 @@ RUN sed -i 's|^# deb http://snapshot|deb [check-valid-until=no] http://snapshot|
     php7.4 \
     php7.4-fpm \
     php7.4-mysql \
+    php-redis \
     mariadb-client \
     curl \
     && rm -rf /var/lib/apt/lists/*

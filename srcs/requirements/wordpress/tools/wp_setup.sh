@@ -28,9 +28,31 @@ if [ ! -f wp-config.php ]; then
 
     echo "Creating the second user..."
     wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$DB_PASSWORD --allow-root
+
+    echo "Configuring Redis cache in wp-config.php..."
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --raw --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+
+    echo "Installing and activating Redis Object Cache plugin..."
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
     
     echo "Installation completed successfully!"
 fi
+
+# Ensure Redis cache is configured and enabled on pre-existing installations
+if ! wp plugin is-installed redis-cache --allow-root 2>/dev/null; then
+    echo "Configuring Redis cache on pre-existing installation..."
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --raw --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
+fi
+
+echo "Setting correct permissions..."
+chown -R www-data:www-data /var/www/html
 
 echo "Starting PHP-FPM in the foreground..."
 exec /usr/sbin/php-fpm7.4 -F

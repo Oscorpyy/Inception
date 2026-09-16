@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Infinite Cow - opernod.42.fr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating HUD Tracker -->
+    <div class="hud" id="hud">
+        <div class="hud-item">
+            <span class="hud-label">Leg Depth:</span>
+            <span class="hud-val" id="depthMeter">0 m</span>
+        </div>
+        <div class="hud-item">
+            <span class="hud-label">Segments:</span>
+            <span class="hud-val" id="segmentCount">0</span>
+        </div>
+        <button id="btnTop" class="btn-top" title="Back to the head">🐮 Back to top</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>opernod.42.fr</h1>
+            <p class="subtitle">Inception Bonus &bull; The Infinitely Long Cow (Vache Infinie)</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Project Overview Card -->
+        <section class="card">
+            <h2>42 Inception &bull; Static Site Bonus</h2>
+            <p>
+                This static website is served in its own independent container for the 
+                <strong>42 Inception</strong> project.
+            </p>
+            <ul>
+                <li><strong>Base Image:</strong> Debian Bullseye (Penultimate stable)</li>
+                <li><strong>Technology:</strong> Pure HTML5, CSS3, Vanilla JS (Strictly <strong>NO PHP</strong>)</li>
+                <li><strong>Architecture:</strong> Internal NGINX routed via port 443 TLS Reverse Proxy</li>
+                <li><strong>Mission:</strong> Scroll down to find the cow's hooves... (Spoiler: never-ending legs!)</li>
+            </ul>
+        </section>
+
+        <!-- Infinite Cow Wrapper -->
+        <section class="cow-section">
+            <!-- Cow Head & Upper Body -->
+            <div class="cow-top">
+                <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg" class="cow-svg">
+                    <!-- Tail -->
+                    <path d="M 20 130 Q -5 160 5 180 Q 8 185 15 180 Q 2 165 25 140" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <ellipse cx="6" cy="182" rx="7" ry="10" fill="#1e293b"/>
+
+                    <!-- Main Cow Body -->
+                    <rect x="15" y="80" width="290" height="150" rx="40" ry="40" fill="#f8fafc" stroke="#1e293b" stroke-width="4"/>
+
+                    <!-- Cow Spots on Body -->
+                    <path d="M 30 110 Q 50 85 80 100 Q 95 125 70 145 Q 40 150 30 110 Z" fill="#1e293b"/>
+                    <path d="M 180 85 Q 230 80 240 120 Q 220 155 190 140 Q 160 115 180 85 Z" fill="#1e293b"/>
+                    <path d="M 130 180 Q 150 165 170 185 Q 160 210 135 205 Z" fill="#1e293b"/>
+
+                    <!-- Udder (between leg 2 and 3) -->
+                    <path d="M 125 220 Q 158 245 191 220" fill="#fda4af" stroke="#f43f5e" stroke-width="2"/>
+                    <rect x="140" y="230" width="6" height="12" rx="3" fill="#f43f5e"/>
+                    <rect x="155" y="233" width="6" height="12" rx="3" fill="#f43f5e"/>
+                    <rect x="170" y="230" width="6" height="12" rx="3" fill="#f43f5e"/>
+
+                    <!-- Leg Stumps starting at y=220 to match leg streams -->
+                    <rect x="20" y="220" width="36" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <rect x="80" y="220" width="36" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <rect x="200" y="220" width="36" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <rect x="260" y="220" width="36" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+
+                    <!-- Erase bottom line for smooth seamless leg flow -->
+                    <line x1="22" y1="260" x2="54" y2="260" stroke="#f8fafc" stroke-width="5"/>
+                    <line x1="82" y1="260" x2="114" y2="260" stroke="#f8fafc" stroke-width="5"/>
+                    <line x1="202" y1="260" x2="234" y2="260" stroke="#f8fafc" stroke-width="5"/>
+                    <line x1="262" y1="260" x2="294" y2="260" stroke="#f8fafc" stroke-width="5"/>
+
+                    <!-- Horns -->
+                    <path d="M 125 45 Q 115 15 95 25 Q 115 35 125 50 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
+                    <path d="M 195 45 Q 205 15 225 25 Q 205 35 195 50 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
+
+                    <!-- Ears -->
+                    <ellipse cx="100" cy="55" rx="20" ry="12" transform="rotate(-25 100 55)" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <ellipse cx="100" cy="55" rx="13" ry="7" transform="rotate(-25 100 55)" fill="#fda4af"/>
+                    <ellipse cx="220" cy="55" rx="20" ry="12" transform="rotate(25 220 55)" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <ellipse cx="220" cy="55" rx="13" ry="7" transform="rotate(25 220 55)" fill="#fda4af"/>
+
+                    <!-- Head -->
+                    <ellipse cx="160" cy="65" rx="45" ry="40" fill="#f8fafc" stroke="#1e293b" stroke-width="3"/>
+                    <path d="M 145 30 Q 175 30 180 55 Q 160 70 145 55 Z" fill="#1e293b"/>
+
+                    <!-- Eyes -->
+                    <ellipse cx="140" cy="60" rx="6" ry="7" fill="#0f172a"/>
+                    <circle cx="138" cy="58" r="2" fill="#ffffff"/>
+                    <ellipse cx="180" cy="60" rx="6" ry="7" fill="#0f172a"/>
+                    <circle cx="178" cy="58" r="2" fill="#ffffff"/>
+
+                    <!-- Snout -->
+                    <rect x="130" y="70" width="60" height="35" rx="15" fill="#fbcfe8" stroke="#f43f5e" stroke-width="2"/>
+                    <ellipse cx="145" cy="85" rx="4" ry="5" fill="#831843"/>
+                    <ellipse cx="175" cy="85" rx="4" ry="5" fill="#831843"/>
+
+                    <!-- Bell -->
+                    <rect x="145" y="105" width="30" height="6" rx="3" fill="#ef4444"/>
+                    <path d="M 152 111 L 148 128 L 172 128 L 168 111 Z" fill="#eab308" stroke="#ca8a04" stroke-width="1.5"/>
+                    <circle cx="160" cy="130" r="3" fill="#a16207"/>
+                </svg>
+            </div>
+
+            <!-- Infinite Legs Stream -->
+            <div id="legsContainer" class="legs-container">
+                <!-- Dynamically generated segments go here -->
+            </div>
+
+            <!-- Sentinel triggering infinite scroll loading -->
+            <div id="sentinel" class="sentinel">
+                <div class="spinner"></div>
+                <p>Generating more leg length...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
