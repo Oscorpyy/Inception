@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
 }
 
-/* Floating HUD */
 .hud {
     position: fixed;
     top: 1.25rem;
@@ -74,7 +73,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Layout */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -137,7 +135,6 @@ main {
     border-bottom: none;
 }
 
-/* Cow Section */
 .cow-section {
     display: flex;
     flex-direction: column;
@@ -159,7 +156,6 @@ main {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
 
-/* Legs Container & Segments */
 .legs-container {
     width: 320px;
     display: flex;
@@ -187,20 +183,17 @@ main {
     overflow: hidden;
 }
 
-/* Leg positions matching the SVG body stumps */
 .leg-1 { left: 20px; }
 .leg-2 { left: 80px; }
 .leg-3 { left: 200px; }
 .leg-4 { left: 260px; }
 
-/* Cow Spots inside legs */
 .leg-spot {
     position: absolute;
     background-color: var(--cow-outline);
     border-radius: 50%;
 }
 
-/* Milestone signs displayed along the infinite scroll */
 .milestone-badge {
     position: absolute;
     top: 50%;
@@ -219,7 +212,6 @@ main {
     animation: fadeIn 0.4s ease;
 }
 
-/* Loading Sentinel */
 .sentinel {
     width: 320px;
     padding: 2.5rem 0;

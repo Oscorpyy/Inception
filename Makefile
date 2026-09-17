@@ -1,23 +1,27 @@
 all:
-	@printf "Lancement de la configuration Inception...\n"
-	@docker-compose -f srcs/docker-compose.yml up -d --build
+		@printf "Starting Inception configuration...\n"
+		@sudo mkdir -p /home/opernod/data/mariadb /home/opernod/data/wordpress /home/opernod/data/portainer
+		@docker-compose -f srcs/docker-compose.yml up -d --build
 
 down:
-	@printf "Arrêt des conteneurs...\n"
-	@docker-compose -f srcs/docker-compose.yml down
+		@printf "Stopping containers...\n"
+		@docker-compose -f srcs/docker-compose.yml down
 
 re:
-	@printf "Reconstruction de l'infrastructure...\n"
-	@docker-compose -f srcs/docker-compose.yml up -d --build --force-recreate
+		@printf "Rebuilding the infrastructure...\n"
+		@sudo mkdir -p /home/opernod/data/mariadb /home/opernod/data/wordpress /home/opernod/data/portainer
+		@docker-compose -f srcs/docker-compose.yml up -d --build --force-recreate
 
 clean:
-	@printf "Nettoyage des conteneurs, images et réseaux...\n"
-	@docker-compose -f srcs/docker-compose.yml down --rmi all -v
+		@printf "Cleaning up containers, images and networks...\n"
+		@docker-compose -f srcs/docker-compose.yml down --rmi all -v
 
 fclean: clean
-	@printf "Suppression totale des volumes et des dossiers de données...\n"
-	@sudo rm -rf /home/opernod/data/mariadb/*
-	@sudo rm -rf /home/opernod/data/wordpress/*
-	@docker system prune -af
+		@printf "Complete removal of volumes and data directories...\n"
+		@sudo rm -rf /home/opernod/data/mariadb/*
+		@sudo rm -rf /home/opernod/data/wordpress/*
+		@sudo rm -rf /home/opernod/data/portainer/*
+		@docker system prune -af
 
 .PHONY: all down re clean fclean
+

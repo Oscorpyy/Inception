@@ -7,7 +7,6 @@ if [ ! -f wp-config.php ]; then
     wp core download --allow-root
 
     echo "Reading Docker secrets..."
-    # Retrieve passwords from the secret files
     DB_ROOT_PASSWORD=$(cat $WP_ADMIN_PASSWORD_FILE)
     DB_PASSWORD=$(cat $WP_USER_PASSWORD_FILE)
 
@@ -41,7 +40,6 @@ if [ ! -f wp-config.php ]; then
     echo "Installation completed successfully!"
 fi
 
-# Ensure Redis cache is configured and enabled on pre-existing installations
 if ! wp plugin is-installed redis-cache --allow-root 2>/dev/null; then
     echo "Configuring Redis cache on pre-existing installation..."
     wp config set WP_REDIS_HOST redis --allow-root

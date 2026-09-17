@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalSegments = 0;
     let isLoading = false;
 
-    // Milestones with humorous messages
     const milestones = {
         5: "🌾 50m - Still close to the surface grass...",
         10: "☁️ 100m - Leg physics are holding up.",
@@ -22,17 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
         500: "⭐ 5,000m - Legendary Leg Scroller!"
     };
 
-    // Helper to generate a single leg segment
     function createLegSegment(index) {
         const segment = document.createElement("div");
         segment.className = "leg-segment";
 
-        // Create 4 legs matching the cow body
         for (let i = 1; i <= 4; i++) {
             const leg = document.createElement("div");
             leg.className = `leg leg-${i}`;
 
-            // Random chance to spawn a natural cow spot
             if (Math.random() < 0.35) {
                 const spot = document.createElement("div");
                 spot.className = "leg-spot";
@@ -53,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
             segment.appendChild(leg);
         }
 
-        // Add milestone badge if reached
         if (milestones[index]) {
             const badge = document.createElement("div");
             badge.className = "milestone-badge";
@@ -64,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return segment;
     }
 
-    // Append a batch of leg segments
     function loadMoreSegments(count = 10) {
         if (isLoading) return;
         isLoading = true;
@@ -80,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         isLoading = false;
     }
 
-    // IntersectionObserver for efficient infinite scrolling
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -88,23 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        rootMargin: "600px" // Pre-load well before user hits the bottom
+        rootMargin: "600px"
     });
 
     observer.observe(sentinel);
 
-    // Initial batch so there's immediate scroll space
     loadMoreSegments(12);
 
-    // Update HUD depth on scroll
     window.addEventListener("scroll", () => {
         const scrollY = window.scrollY || window.pageYOffset;
-        // 1 meter = 4 pixels of scroll depth
         const meters = Math.floor(scrollY / 4);
         depthMeter.textContent = `${meters.toLocaleString()} m`;
     }, { passive: true });
 
-    // Scroll back to top button
     btnTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
